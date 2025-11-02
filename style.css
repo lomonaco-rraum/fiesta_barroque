@@ -33,3 +33,16 @@ h1 {
   padding: 10px;
   margin: 10px;
 }
+
+#video {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: 2px solid gold;
+  margin: 10px;
+}
+
+#composicion {
+  border: 2px solid #a52a2a;
+  margin-top: 20px;
+}

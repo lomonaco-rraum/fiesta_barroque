@@ -9,11 +9,6 @@ function acceder() {
   document.getElementById('experiencia').style.display = 'block';
 
   const video = document.getElementById('video');
-  if (!video) {
-    alert("No se encontró el elemento de video.");
-    return;
-  }
-
   navigator.mediaDevices.getUserMedia({ video: true })
     .then(stream => {
       video.srcObject = stream;
@@ -24,18 +19,26 @@ function acceder() {
 }
 
 function iniciarRetrato() {
+  const video = document.getElementById('video');
   const canvas = document.getElementById('composicion');
   const ctx = canvas.getContext('2d');
-  const video = document.getElementById('video');
   const imagen = new Image();
   imagen.src = 'assets/madame.png';
 
-  // Dibujar rostro desde cámara
-  ctx.drawImage(video, 100, 100, 200, 200); // Ajustá según el hueco de la pintura
+  // Ocultar video y mostrar canvas
+  video.style.display = 'none';
+  canvas.style.display = 'block';
 
-  // Superponer pintura barroca
+  // Dibujar rostro desde cámara (ajustá según el hueco de la imagen)
+  ctx.drawImage(video, 200, 200, 200, 200); // x, y, width, height
+
+  // Superponer imagen PNG en tamaño original y centrada
   imagen.onload = () => {
-    ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
+    const imgW = imagen.width;
+    const imgH = imagen.height;
+    const x = (canvas.width - imgW) / 2;
+    const y = (canvas.height - imgH) / 2;
+    ctx.drawImage(imagen, x, y, imgW, imgH);
     document.getElementById('compartir').style.display = 'inline-block';
   };
 }
