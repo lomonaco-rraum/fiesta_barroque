@@ -1,0 +1,19 @@
+body {
+  font-family: 'Cormorant Garamond', serif;
+  background-color: #fff8f0;
+  color: #2c1c0c;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3em;
+  color: white;
+  text-shadow: 2px 2px 4px gold;
+}
+
+.barroque {
+  font-style: italic;
+  font-weight: bold;
+  color: #a52a2a;
+}

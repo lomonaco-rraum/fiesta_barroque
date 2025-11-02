@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Una fiesta barroque</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Cormorant+Garamond&display=swap" rel="stylesheet">
+</head>
+<body>
+  <section id="portada">
+    <h1>Una fiesta barroque</h1>
+    <button onclick="acceder()">Acceder al salón</button>
+  </section>
+
+  <section id="experiencia" style="display:none;">
+    <h2>¿Qué tan <span class="barroque">madame Pompadour</span> te sentís hoy?</h2>
+    <select id="estado">
+      <option value="madame">Modo Madame Pompadour</option>
+    </select>
+    <button onclick="iniciarRetrato()">Iniciar retrato barroque</button>
+
+    <canvas id="composicion" width="400" height="400"></canvas>
+    <button id="compartir" style="display:none;" onclick="compartir()">Compartir en Facebook</button>
+
+    <audio autoplay loop>
+      <source src="assets/sonido.mp3" type="audio/mpeg">
+    </audio>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
