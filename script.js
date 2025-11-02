@@ -17,6 +17,43 @@ function acceder() {
     });
 }
 
+function detectarHuecoTransparente(imagen, callback) {
+  const tempCanvas = document.createElement('canvas');
+  const tempCtx = tempCanvas.getContext('2d');
+
+  tempCanvas.width = imagen.width;
+  tempCanvas.height = imagen.height;
+  tempCtx.drawImage(imagen, 0, 0);
+
+  const imgData = tempCtx.getImageData(0, 0, imagen.width, imagen.height);
+  const data = imgData.data;
+
+  let minX = imagen.width, minY = imagen.height;
+  let maxX = 0, maxY = 0;
+
+  for (let y = 0; y < imagen.height; y++) {
+    for (let x = 0; x < imagen.width; x++) {
+      const i = (y * imagen.width + x) * 4;
+      const alpha = data[i + 3];
+      if (alpha < 10) {
+        if (x < minX) minX = x;
+        if (y < minY) minY = y;
+        if (x > maxX) maxX = x;
+        if (y > maxY) maxY = y;
+      }
+    }
+  }
+
+  const hueco = {
+    x: minX,
+    y: minY,
+    width: maxX - minX,
+    height: maxY - minY
+  };
+
+  callback(hueco);
+}
+
 function iniciarRetrato() {
   const video = document.getElementById('video');
   const canvas = document.getElementById('composicion');
@@ -24,28 +61,16 @@ function iniciarRetrato() {
   const imagen = new Image();
   imagen.src = 'assets/madame.png';
 
-  // Ocultar elementos previos
   video.style.display = 'none';
   canvas.style.display = 'block';
   document.getElementById('pregunta').style.display = 'none';
 
   imagen.onload = () => {
-    // Paso 1: dibujar el rostro en la zona transparente
-    // Ajustá estos valores según el hueco real de madame.png
-    const rostroX = 150;
-    const rostroY = 220;
-    const rostroW = 300;
-    const rostroH = 300;
-    ctx.drawImage(video, rostroX, rostroY, rostroW, rostroH);
-
-    // Paso 2: superponer la imagen PNG centrada
-    const imgW = imagen.width;
-    const imgH = imagen.height;
-    const x = (canvas.width - imgW) / 2;
-    const y = (canvas.height - imgH) / 2;
-    ctx.drawImage(imagen, x, y, imgW, imgH);
-
-    document.getElementById('compartir').style.display = 'inline-block';
+    detectarHuecoTransparente(imagen, (hueco) => {
+      ctx.drawImage(video, hueco.x, hueco.y, hueco.width, hueco.height);
+      ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
+      document.getElementById('compartir').style.display = 'inline-block';
+    });
   };
 }
 
