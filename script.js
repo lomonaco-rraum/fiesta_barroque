@@ -15,12 +15,13 @@ document.getElementById("retrato").addEventListener("click", () => {
   const imagen = new Image();
   imagen.src = "assets/madame.png";
 
-  // Ajustar canvas al tamaño del dispositivo
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
   video.style.display = "block";
   canvas.style.display = "block";
+
+  document.getElementById("experiencia").classList.add("retrato-activa");
 
   navigator.mediaDevices.getUserMedia({ video: true })
     .then(stream => {
@@ -68,13 +69,24 @@ function tomarFoto() {
       ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
 
       document.getElementById("hashtag").style.display = "block";
-      document.getElementById("compartir").style.display = "block";
-      video.style.display = "none";
 
-      const enlace = document.createElement("a");
-      enlace.download = "retrato_barroque.png";
-      enlace.href = canvas.toDataURL("image/png");
-      enlace.click();
+      const compartir = document.getElementById("compartir");
+      compartir.style.display = "flex";
+      compartir.style.transform = "translateX(-50%) translateY(20px)";
+      setTimeout(() => {
+        compartir.style.opacity = 1;
+        compartir.style.transform = "translateX(-50%) translateY(0)";
+      }, 100);
+
+      video.style.display = "none";
     };
   }
 }
+
+document.getElementById("descargar").addEventListener("click", () => {
+  const canvas = document.getElementById("composicion");
+  const enlace = document.createElement("a");
+  enlace.download = "retrato_barroque.png";
+  enlace.href = canvas.toDataURL("image/png");
+  enlace.click();
+});
