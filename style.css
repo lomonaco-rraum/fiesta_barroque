@@ -29,16 +29,6 @@ html, body {
   transition: opacity 1.5s ease;
 }
 
-#portada h1 {
-  font-size: 12vw;
-  color: rgb(255, 255, 255);
-  text-shadow:
-    0 0 7px gold,
-    2px 2px 0 gold,
-    -2px -2px 0 gold;
-  line-height: 1.2;
-}
-
 /* Botón barroco */
 .boton-barroque {
   font-family: 'Old English Text MT', cursive;
@@ -76,14 +66,14 @@ html, body {
 }
 
 #pregunta h2 {
-  font-size: 8vw;
+  font-size: 6vw;
   margin: 1vh 0;
   color: white;
   text-shadow: 0 0 5px gold;
 }
 
 .menu-barroque {
-  font-size: 6vw;
+  font-size: 5vw;
   border: 2px solid gold;
   background-color: #fff8f0;
   color: #2c1c0c;
@@ -100,7 +90,7 @@ html, body {
 }
 
 .mensaje-compartir {
-  font-size: 4vw;
+  font-size: 3.5vw;
   color: white;
   text-shadow: 0 0 5px black;
   margin: 2vh;
