@@ -31,9 +31,9 @@ html, body {
 
 #portada h1 {
   font-size: 12vw;
-  color: white;
+  color: rgb(255, 255, 255);
   text-shadow:
-    0 0 5px gold,
+    0 0 7px gold,
     2px 2px 0 gold,
     -2px -2px 0 gold;
   line-height: 1.2;
@@ -52,6 +52,8 @@ html, body {
   cursor: pointer;
   transition: transform 0.3s ease;
   margin-top: 5vh;
+  text-decoration: none;
+  display: inline-block;
 }
 .boton-barroque:hover {
   transform: scale(1.05);

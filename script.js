@@ -37,6 +37,13 @@ function tomarFoto() {
   if (video.style.display === "block") {
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
     document.getElementById("hashtag").style.display = "block";
+    document.getElementById("compartir").style.display = "block";
     video.style.display = "none";
+
+    // Guardar imagen automáticamente
+    const enlace = document.createElement("a");
+    enlace.download = "retrato_barroque.png";
+    enlace.href = canvas.toDataURL("image/png");
+    enlace.click();
   }
 }
