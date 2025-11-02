@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onclick="tomarFoto()">
   <audio id="musica" autoplay loop>
     <source src="assets/sonido.mp3" type="audio/mpeg">
   </audio>
@@ -27,26 +27,13 @@
       <h2>te sentís hoy?</h2>
     </div>
 
+    <button class="boton-barroque" id="retrato">Retrato barroque</button>
+
     <video id="video" autoplay playsinline style="display:none;"></video>
     <canvas id="composicion" width="300" height="400" style="display:none;"></canvas>
     <img id="hashtag" src="assets/hashtag.png" style="display:none; position:absolute; bottom:10vh; width:80vw;" />
   </section>
 
-  <script>
-    document.getElementById("entrar").addEventListener("click", () => {
-      document.getElementById("portada").style.display = "none";
-      document.getElementById("experiencia").style.display = "flex";
-
-      const video = document.getElementById("video");
-      navigator.mediaDevices.getUserMedia({ video: true })
-        .then(stream => {
-          video.srcObject = stream;
-          video.style.display = "none"; // se activa solo para captura
-        })
-        .catch(err => {
-          alert("No se pudo acceder a la cámara: " + err);
-        });
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>

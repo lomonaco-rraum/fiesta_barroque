@@ -1,21 +1,21 @@
-document.body.addEventListener('click', () => {
-  const musica = document.getElementById('musica');
-  if (musica) musica.muted = false;
+document.getElementById("entrar").addEventListener("click", () => {
+  document.getElementById("portada").style.display = "none";
+  document.getElementById("experiencia").style.display = "flex";
 });
 
-function acceder() {
-  const telon = document.getElementById('telon');
-  telon.classList.add('abrir');
+document.getElementById("retrato").addEventListener("click", () => {
+  document.getElementById("pregunta").style.display = "none";
+  document.getElementById("retrato").style.display = "none";
 
-  // Esperar a que se abra el telón antes de mostrar el salón
-  setTimeout(() => {
-    document.getElementById('portada').style.display = 'none';
-    document.getElementById('experiencia').style.display = 'block';
-    telon.classList.remove('abrir');
-  }, 1500);
+  const video = document.getElementById("video");
+  const canvas = document.getElementById("composicion");
+  const ctx = canvas.getContext("2d");
+  const imagen = new Image();
+  imagen.src = "assets/madame.png";
 
-  // Activar cámara
-  const video = document.getElementById('video');
+  video.style.display = "block";
+  canvas.style.display = "block";
+
   navigator.mediaDevices.getUserMedia({ video: true })
     .then(stream => {
       video.srcObject = stream;
@@ -23,86 +23,20 @@ function acceder() {
     .catch(err => {
       alert("No se pudo acceder a la cámara: " + err);
     });
-}
-
-function detectarHuecoTransparente(imagen, callback) {
-  const tempCanvas = document.createElement('canvas');
-  const tempCtx = tempCanvas.getContext('2d');
-
-  tempCanvas.width = imagen.width;
-  tempCanvas.height = imagen.height;
-  tempCtx.drawImage(imagen, 0, 0);
-
-  const imgData = tempCtx.getImageData(0, 0, imagen.width, imagen.height);
-  const data = imgData.data;
-
-  let minX = imagen.width, minY = imagen.height;
-  let maxX = 0, maxY = 0;
-
-  for (let y = 0; y < imagen.height; y++) {
-    for (let x = 0; x < imagen.width; x++) {
-      const i = (y * imagen.width + x) * 4;
-      const alpha = data[i + 3];
-      if (alpha < 10) {
-        if (x < minX) minX = x;
-        if (y < minY) minY = y;
-        if (x > maxX) maxX = x;
-        if (y > maxY) maxY = y;
-      }
-    }
-  }
-
-  const hueco = {
-    x: minX,
-    y: minY,
-    width: maxX - minX,
-    height: maxY - minY
-  };
-
-  callback(hueco);
-}
-
-function iniciarRetrato() {
-  const video = document.getElementById('video');
-  const canvas = document.getElementById('composicion');
-  const ctx = canvas.getContext('2d');
-  const imagen = new Image();
-  imagen.src = 'assets/madame.png';
-
-  video.style.display = 'none';
-  canvas.style.display = 'block';
-  document.getElementById('pregunta').style.display = 'none';
 
   imagen.onload = () => {
-    detectarHuecoTransparente(imagen, (hueco) => {
-      const escala = 0.9;
-
-      const centroHuecoX = hueco.x + hueco.width / 2;
-      const centroHuecoY = hueco.y + hueco.height / 2;
-
-      const destinoW = hueco.width * escala;
-      const destinoH = hueco.height * escala;
-      const destinoX = centroHuecoX - destinoW / 2;
-      const destinoY = centroHuecoY - destinoH / 2;
-
-      const videoW = video.videoWidth;
-      const videoH = video.videoHeight;
-
-      const recorteW = destinoW / escala;
-      const recorteH = destinoH / escala;
-      const origenX = videoW / 2 - recorteW / 2;
-      const origenY = videoH / 2 - recorteH / 2;
-
-      ctx.drawImage(video, origenX, origenY, recorteW, recorteH, destinoX, destinoY, destinoW, destinoH);
-      ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
-
-      document.getElementById('compartir').style.display = 'inline-block';
-    });
+    ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
   };
-}
+});
 
-function compartir() {
-  const texto = "Estoy en #soymadamepompadour en #fiestabarroque";
-  const url = `https://www.facebook.com/sharer/sharer.php?quote=${encodeURIComponent(texto)}&u=https://lomonaco-rraum.github.io/fiesta_barroque/`;
-  window.open(url, '_blank');
+function tomarFoto() {
+  const video = document.getElementById("video");
+  const canvas = document.getElementById("composicion");
+  const ctx = canvas.getContext("2d");
+
+  if (video.style.display === "block") {
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    document.getElementById("hashtag").style.display = "block";
+    video.style.display = "none";
+  }
 }

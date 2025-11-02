@@ -26,6 +26,7 @@ html, body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: opacity 1.5s ease;
 }
 
 #portada h1 {
