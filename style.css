@@ -98,3 +98,10 @@ html, body {
   max-width: 90vw;
   max-height: 60vh;
 }
+
+.mensaje-compartir {
+  font-size: 4vw;
+  color: white;
+  text-shadow: 0 0 5px black;
+  margin: 2vh;
+}
