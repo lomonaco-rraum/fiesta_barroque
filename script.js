@@ -67,11 +67,13 @@ function iniciarRetrato() {
 
   imagen.onload = () => {
     detectarHuecoTransparente(imagen, (hueco) => {
+      const escala = 0.9; // Ajustá este valor para cambiar el tamaño del rostro
+
       const centroHuecoX = hueco.x + hueco.width / 2;
       const centroHuecoY = hueco.y + hueco.height / 2;
 
-      const rostroW = hueco.width;
-      const rostroH = hueco.height;
+      const rostroW = hueco.width * escala;
+      const rostroH = hueco.height * escala;
 
       const rostroX = centroHuecoX - rostroW / 2;
       const rostroY = centroHuecoY - rostroH / 2;
