@@ -136,3 +136,30 @@ html, body {
   opacity: 0;
   transition: opacity 1s ease, transform 0.5s ease;
 }
+
+/* Galería interna */
+#galeria {
+  position: absolute;
+  top: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90vw;
+  max-height: 60vh;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1vh;
+  justify-content: center;
+  background-color: rgba(255, 248, 240, 0.9);
+  border: 2px solid gold;
+  padding: 2vh;
+  border-radius: 10px;
+  box-shadow: 0 0 10px gold;
+  font-family: 'Old English Text MT', cursive;
+}
+
+.miniatura {
+  width: 30vw;
+  border: 2px solid black;
+  box-shadow: 0 0 5px #444;
+}

@@ -85,13 +85,21 @@ document.getElementById("obturador").addEventListener("click", () => {
       compartir.style.opacity = 1;
       compartir.style.transform = "translateX(-50%) translateY(0)";
     }, 100);
+
+    // Guardar imagen en galería
+    agregarAGaleria(canvas);
   };
 });
 
-document.getElementById("descargar").addEventListener("click", () => {
-  const canvas = document.getElementById("composicion");
-  const enlace = document.createElement("a");
-  enlace.download = "retrato_barroque.png";
-  enlace.href = canvas.toDataURL("image/png");
-  enlace.click();
+function agregarAGaleria(canvas) {
+  const galeria = document.getElementById("galeria");
+  const img = new Image();
+  img.src = canvas.toDataURL("image/png");
+  img.className = "miniatura";
+  galeria.appendChild(img);
+}
+
+document.getElementById("ver-galeria").addEventListener("click", () => {
+  const galeria = document.getElementById("galeria");
+  galeria.style.display = galeria.style.display === "none" ? "flex" : "none";
 });
