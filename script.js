@@ -29,16 +29,22 @@ function iniciarRetrato() {
   canvas.style.display = 'block';
   document.getElementById('pregunta').style.display = 'none';
 
-  // Dibujar rostro desde cámara (ajustá según el hueco de la imagen)
-  ctx.drawImage(video, 200, 200, 200, 200); // x, y, width, height
-
-  // Superponer imagen PNG centrada
   imagen.onload = () => {
+    // Paso 1: dibujar el rostro en la zona transparente
+    // Ajustá estos valores según el hueco real de madame.png
+    const rostroX = 150;
+    const rostroY = 220;
+    const rostroW = 300;
+    const rostroH = 300;
+    ctx.drawImage(video, rostroX, rostroY, rostroW, rostroH);
+
+    // Paso 2: superponer la imagen PNG centrada
     const imgW = imagen.width;
     const imgH = imagen.height;
     const x = (canvas.width - imgW) / 2;
     const y = (canvas.height - imgH) / 2;
     ctx.drawImage(imagen, x, y, imgW, imgH);
+
     document.getElementById('compartir').style.display = 'inline-block';
   };
 }
