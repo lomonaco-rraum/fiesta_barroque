@@ -1,14 +1,29 @@
 function acceder() {
   document.getElementById('portada').style.display = 'none';
   document.getElementById('experiencia').style.display = 'block';
+
+  // Activar cámara
+  const video = document.getElementById('video');
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(stream => {
+      video.srcObject = stream;
+    })
+    .catch(err => {
+      alert("No se pudo acceder a la cámara: " + err);
+    });
 }
 
 function iniciarRetrato() {
   const canvas = document.getElementById('composicion');
   const ctx = canvas.getContext('2d');
+  const video = document.getElementById('video');
   const imagen = new Image();
   imagen.src = 'assets/madame.png';
 
+  // Dibujar rostro desde cámara
+  ctx.drawImage(video, 100, 100, 200, 200); // Ajustá según el hueco de la pintura
+
+  // Superponer pintura barroca
   imagen.onload = () => {
     ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
     document.getElementById('compartir').style.display = 'inline-block';
