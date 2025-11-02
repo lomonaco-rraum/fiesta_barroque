@@ -4,16 +4,18 @@ document.getElementById("entrar").addEventListener("click", () => {
   document.getElementById("portada").style.display = "none";
   document.getElementById("experiencia").style.display = "flex";
   document.getElementById("musica").play();
+  document.getElementById("experiencia").style.backgroundImage = "url('assets/salon.jpg')";
 });
 
 document.getElementById("retrato").addEventListener("click", () => {
   document.getElementById("pregunta").style.display = "none";
   document.getElementById("retrato").style.display = "none";
 
+  const estado = document.getElementById("estado").value;
   const video = document.getElementById("video");
   const canvas = document.getElementById("composicion");
   const imagen = new Image();
-  imagen.src = "assets/madame.png";
+  imagen.src = `assets/${estado}.png`;
 
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -21,7 +23,7 @@ document.getElementById("retrato").addEventListener("click", () => {
   video.style.display = "block";
   canvas.style.display = "block";
 
-  document.getElementById("experiencia").classList.add("retrato-activa");
+  document.getElementById("experiencia").style.backgroundImage = `url('assets/${estado}.png')`;
 
   navigator.mediaDevices.getUserMedia({ video: true })
     .then(stream => {
@@ -44,7 +46,6 @@ function iniciarRenderizado(video, canvas, imagen) {
   function renderLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Escalado proporcional del video
     const videoRatio = video.videoWidth / video.videoHeight;
     const canvasRatio = canvas.width / canvas.height;
 
@@ -72,6 +73,7 @@ function iniciarRenderizado(video, canvas, imagen) {
 }
 
 document.getElementById("obturador").addEventListener("click", () => {
+  const estado = document.getElementById("estado").value;
   const video = document.getElementById("video");
   const canvas = document.getElementById("composicion");
   const ctx = canvas.getContext("2d");
@@ -82,7 +84,6 @@ document.getElementById("obturador").addEventListener("click", () => {
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Escalado proporcional del video
   const videoRatio = video.videoWidth / video.videoHeight;
   const canvasRatio = canvas.width / canvas.height;
 
@@ -103,7 +104,7 @@ document.getElementById("obturador").addEventListener("click", () => {
   ctx.filter = "none";
 
   const marco = new Image();
-  marco.src = "assets/madame.png";
+  marco.src = `assets/${estado}.png`;
   marco.onload = () => {
     ctx.drawImage(marco, 0, 0, canvas.width, canvas.height);
 
@@ -160,5 +161,7 @@ document.getElementById("volver").addEventListener("click", () => {
 
   document.getElementById("pregunta").style.display = "block";
   document.getElementById("retrato").style.display = "block";
-  document.getElementById("experiencia").classList.remove("retrato-activa");
+
+  // Restaurar fondo del salón
+  document.getElementById("experiencia").style.backgroundImage = "url('assets/salon.jpg')";
 });
