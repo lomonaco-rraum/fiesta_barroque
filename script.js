@@ -67,18 +67,25 @@ function iniciarRetrato() {
 
   imagen.onload = () => {
     detectarHuecoTransparente(imagen, (hueco) => {
-      const escala = 0.9; // Ajustá este valor para cambiar el tamaño del rostro
+      const escala = 0.9;
 
       const centroHuecoX = hueco.x + hueco.width / 2;
       const centroHuecoY = hueco.y + hueco.height / 2;
 
-      const rostroW = hueco.width * escala;
-      const rostroH = hueco.height * escala;
+      const destinoW = hueco.width * escala;
+      const destinoH = hueco.height * escala;
+      const destinoX = centroHuecoX - destinoW / 2;
+      const destinoY = centroHuecoY - destinoH / 2;
 
-      const rostroX = centroHuecoX - rostroW / 2;
-      const rostroY = centroHuecoY - rostroH / 2;
+      const videoW = video.videoWidth;
+      const videoH = video.videoHeight;
 
-      ctx.drawImage(video, rostroX, rostroY, rostroW, rostroH);
+      const recorteW = destinoW / escala;
+      const recorteH = destinoH / escala;
+      const origenX = videoW / 2 - recorteW / 2;
+      const origenY = videoH / 2 - recorteH / 2;
+
+      ctx.drawImage(video, origenX, origenY, recorteW, recorteH, destinoX, destinoY, destinoW, destinoH);
       ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
 
       document.getElementById('compartir').style.display = 'inline-block';
