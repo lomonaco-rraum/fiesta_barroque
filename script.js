@@ -119,17 +119,23 @@ document.getElementById("obturador").addEventListener("click", () => {
       compartir.style.transform = "translateX(-50%) translateY(0)";
     }, 100);
 
-    document.getElementById("volver").style.display = "inline-block";
     agregarAGaleria(canvas);
   };
 });
 
 function agregarAGaleria(canvas) {
   const galeria = document.getElementById("galeria");
+
+  const enlace = document.createElement("a");
+  enlace.href = canvas.toDataURL("image/png");
+  enlace.download = `retrato_${Date.now()}.png`;
+
   const img = new Image();
-  img.src = canvas.toDataURL("image/png");
+  img.src = enlace.href;
   img.className = "miniatura";
-  galeria.appendChild(img);
+
+  enlace.appendChild(img);
+  galeria.appendChild(enlace);
 }
 
 document.getElementById("ver-galeria").addEventListener("click", () => {
@@ -157,11 +163,8 @@ document.getElementById("volver").addEventListener("click", () => {
   document.getElementById("hashtag").style.display = "none";
   document.getElementById("compartir").style.display = "none";
   document.getElementById("galeria").style.display = "none";
-  document.getElementById("volver").style.display = "none";
 
   document.getElementById("pregunta").style.display = "block";
   document.getElementById("retrato").style.display = "block";
-
-  // Restaurar fondo del salón
   document.getElementById("experiencia").style.backgroundImage = "url('assets/salon.jpg')";
 });

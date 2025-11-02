@@ -48,7 +48,7 @@ html, body {
 #experiencia {
   width: 100vw;
   height: 100vh;
-  background-image: url('assets/salon.jpg'); /* ← fondo por defecto del salón */
+  background-image: url('assets/salon.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -97,7 +97,7 @@ html, body {
   width: 80vw;
 }
 
-#obturador, #volver {
+#obturador {
   position: absolute;
   bottom: 12vh;
   left: 50%;
