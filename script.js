@@ -7,6 +7,13 @@ function acceder() {
   document.getElementById('portada').style.display = 'none';
   document.getElementById('experiencia').style.display = 'block';
 
+  // Activar telón teatral
+  const telon = document.getElementById('telon');
+  telon.style.display = 'block';
+  setTimeout(() => {
+    telon.style.display = 'none';
+  }, 2000);
+
   const video = document.getElementById('video');
   navigator.mediaDevices.getUserMedia({ video: true })
     .then(stream => {

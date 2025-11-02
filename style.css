@@ -4,6 +4,7 @@ body {
   background-color: #fff8f0;
   color: #2c1c0c;
   text-align: center;
+  overflow-x: hidden;
 }
 
 #portada {
@@ -16,12 +17,51 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 h1 {
-  font-size: 3em;
+  font-size: 10vw;
   color: white;
-  text-shadow: 2px 2px 4px gold;
+  text-shadow: 3px 3px 6px gold;
+  margin: 0 20px;
+}
+
+.boton-barroque {
+  font-family: 'Old English Text MT', cursive;
+  font-size: 1.5em;
+  padding: 12px 24px;
+  background: #8b0000;
+  color: gold;
+  border: 3px solid gold;
+  border-radius: 12px;
+  box-shadow: 0 0 10px gold;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.boton-barroque:hover {
+  transform: scale(1.05);
+}
+
+#experiencia {
+  background-image: url('assets/portada.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(255, 248, 240, 0.5);
+  background-blend-mode: overlay;
+  min-height: 100vh;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#pregunta h2 {
+  font-size: 2em;
+  margin: 10px 0;
 }
 
 .menu-barroque {
@@ -36,4 +76,24 @@ h1 {
 
 #composicion {
   margin-top: 20px;
+}
+
+#telon {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: maroon;
+  z-index: 9999;
+  animation: abrirTelon 2s ease forwards;
+}
+
+@keyframes abrirTelon {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
 }
