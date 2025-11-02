@@ -3,6 +3,7 @@ let frameId;
 document.getElementById("entrar").addEventListener("click", () => {
   document.getElementById("portada").style.display = "none";
   document.getElementById("experiencia").style.display = "flex";
+  document.getElementById("musica").play();
 });
 
 document.getElementById("retrato").addEventListener("click", () => {
@@ -11,7 +12,6 @@ document.getElementById("retrato").addEventListener("click", () => {
 
   const video = document.getElementById("video");
   const canvas = document.getElementById("composicion");
-  const ctx = canvas.getContext("2d");
   const imagen = new Image();
   imagen.src = "assets/madame.png";
 
@@ -62,7 +62,6 @@ document.getElementById("obturador").addEventListener("click", () => {
     cancelAnimationFrame(frameId);
   }
 
-  // Capturar el último frame del video + marco
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.filter = "sepia(0.6) contrast(1.2) saturate(1.3)";
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -73,12 +72,10 @@ document.getElementById("obturador").addEventListener("click", () => {
   marco.onload = () => {
     ctx.drawImage(marco, 0, 0, canvas.width, canvas.height);
 
-    // Ocultar video y botón de obturador
     video.style.display = "none";
     document.getElementById("obturador").style.display = "none";
-
-    // Mostrar hashtag y botones
     document.getElementById("hashtag").style.display = "block";
+
     const compartir = document.getElementById("compartir");
     compartir.style.display = "flex";
     setTimeout(() => {
@@ -86,7 +83,7 @@ document.getElementById("obturador").addEventListener("click", () => {
       compartir.style.transform = "translateX(-50%) translateY(0)";
     }, 100);
 
-    // Guardar imagen en galería
+    document.getElementById("volver").style.display = "inline-block";
     agregarAGaleria(canvas);
   };
 });
@@ -102,4 +99,31 @@ function agregarAGaleria(canvas) {
 document.getElementById("ver-galeria").addEventListener("click", () => {
   const galeria = document.getElementById("galeria");
   galeria.style.display = galeria.style.display === "none" ? "flex" : "none";
+});
+
+document.getElementById("volver").addEventListener("click", () => {
+  const video = document.getElementById("video");
+  const canvas = document.getElementById("composicion");
+
+  if (frameId) {
+    cancelAnimationFrame(frameId);
+  }
+
+  const stream = video.srcObject;
+  if (stream) {
+    stream.getTracks().forEach(track => track.stop());
+    video.srcObject = null;
+  }
+
+  video.style.display = "none";
+  canvas.style.display = "none";
+  document.getElementById("obturador").style.display = "none";
+  document.getElementById("hashtag").style.display = "none";
+  document.getElementById("compartir").style.display = "none";
+  document.getElementById("galeria").style.display = "none";
+  document.getElementById("volver").style.display = "none";
+
+  document.getElementById("pregunta").style.display = "block";
+  document.getElementById("retrato").style.display = "block";
+  document.getElementById("experiencia").classList.remove("retrato-activa");
 });
