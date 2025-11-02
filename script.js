@@ -67,8 +67,18 @@ function iniciarRetrato() {
 
   imagen.onload = () => {
     detectarHuecoTransparente(imagen, (hueco) => {
-      ctx.drawImage(video, hueco.x, hueco.y, hueco.width, hueco.height);
+      const centroHuecoX = hueco.x + hueco.width / 2;
+      const centroHuecoY = hueco.y + hueco.height / 2;
+
+      const rostroW = hueco.width;
+      const rostroH = hueco.height;
+
+      const rostroX = centroHuecoX - rostroW / 2;
+      const rostroY = centroHuecoY - rostroH / 2;
+
+      ctx.drawImage(video, rostroX, rostroY, rostroW, rostroH);
       ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
+
       document.getElementById('compartir').style.display = 'inline-block';
     });
   };
