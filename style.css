@@ -17,7 +17,6 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
 }
 
 h1 {
@@ -78,22 +77,41 @@ h1 {
   margin-top: 20px;
 }
 
-#telon {
+/* Telón teatral */
+#telon-container {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: maroon;
   z-index: 9999;
-  animation: abrirTelon 2s ease forwards;
+  pointer-events: none;
 }
 
-@keyframes abrirTelon {
-  0% {
-    transform: translateY(0%);
-  }
-  100% {
-    transform: translateY(-100%);
-  }
+.telon {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: radial-gradient(circle at center, #800000 0%, #4b0000 100%);
+  box-shadow: inset 0 0 30px black;
+  transition: transform 2s ease;
+}
+
+#telon-izq {
+  left: 0;
+  transform: translateX(0%);
+}
+
+#telon-der {
+  right: 0;
+  transform: translateX(0%);
+}
+
+.telon.abierto-izq {
+  transform: translateX(-100%);
+}
+
+.telon.abierto-der {
+  transform: translateX(100%);
 }
