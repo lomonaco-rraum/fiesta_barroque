@@ -1,4 +1,3 @@
-// Activar sonido al primer clic
 document.body.addEventListener('click', () => {
   const musica = document.getElementById('musica');
   if (musica) musica.muted = false;
@@ -25,14 +24,15 @@ function iniciarRetrato() {
   const imagen = new Image();
   imagen.src = 'assets/madame.png';
 
-  // Ocultar video y mostrar canvas
+  // Ocultar elementos previos
   video.style.display = 'none';
   canvas.style.display = 'block';
+  document.getElementById('pregunta').style.display = 'none';
 
-  // Dibujar rostro desde cámara (ajustá según el hueco de la imagen)
-  ctx.drawImage(video, 200, 200, 200, 200); // x, y, width, height
+  // Dibujar rostro desde cámara
+  ctx.drawImage(video, 200, 200, 200, 200); // Ajustá según el hueco
 
-  // Superponer imagen PNG en tamaño original y centrada
+  // Superponer imagen PNG centrada
   imagen.onload = () => {
     const imgW = imagen.width;
     const imgH = imagen.height;

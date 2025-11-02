@@ -6,7 +6,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Sonido de fondo -->
   <audio id="musica" autoplay loop muted>
     <source src="assets/sonido.mp3" type="audio/mpeg">
   </audio>
@@ -17,11 +16,13 @@
   </section>
 
   <section id="experiencia" style="display:none;">
-    <h2>¿Qué tan</h2>
-    <select id="estado" class="menu-barroque">
-      <option value="madame">Modo Madame Pompadour</option>
-    </select>
-    <h2>te sentís hoy?</h2>
+    <div id="pregunta">
+      <h2>¿Qué tan</h2>
+      <select id="estado" class="menu-barroque">
+        <option value="madame">Modo Madame Pompadour</option>
+      </select>
+      <h2>te sentís hoy?</h2>
+    </div>
 
     <div id="vista-previa">
       <video id="video" autoplay playsinline></video>
