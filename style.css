@@ -2,13 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Old English Text MT', cursive;
 }
 
 html, body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  font-family: 'Old English Text MT', cursive;
   background-color: #fff8f0;
   color: #2c1c0c;
   text-align: center;
@@ -26,12 +26,10 @@ html, body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: opacity 1.5s ease;
 }
 
 /* Botón barroco */
 .boton-barroque {
-  font-family: 'Old English Text MT', cursive;
   font-size: 5vw;
   padding: 2vh 4vw;
   background: black;
@@ -53,23 +51,18 @@ html, body {
 #experiencia {
   width: 100vw;
   height: 100vh;
-  background-image: url('assets/portada.jpg');
+  background-image: url('assets/salon.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-color: rgba(255, 248, 240, 0.5);
-  background-blend-mode: overlay;
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-#pregunta h2 {
-  font-size: 6vw;
-  margin: 1vh 0;
-  color: white;
-  text-shadow: 0 0 5px gold;
+#pregunta {
+  margin-top: 20vh;
 }
 
 .menu-barroque {
@@ -79,14 +72,15 @@ html, body {
   color: #2c1c0c;
   padding: 1vh 2vw;
   margin: 1vh;
-  font-family: 'Old English Text MT', cursive;
 }
 
 #composicion {
-  margin-top: 2vh;
+  position: absolute;
+  top: 0;
+  left: 0;
   border: none;
-  max-width: 90vw;
-  max-height: 60vh;
+  width: 100vw;
+  height: 100vh;
 }
 
 .mensaje-compartir {

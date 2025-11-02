@@ -15,6 +15,10 @@ document.getElementById("retrato").addEventListener("click", () => {
   const imagen = new Image();
   imagen.src = "assets/madame.png";
 
+  // Ajustar canvas al tamaño del dispositivo
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
   video.style.display = "block";
   canvas.style.display = "block";
 
