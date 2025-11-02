@@ -1,9 +1,19 @@
+// Activar sonido al primer clic
+document.body.addEventListener('click', () => {
+  const musica = document.getElementById('musica');
+  if (musica) musica.muted = false;
+});
+
 function acceder() {
   document.getElementById('portada').style.display = 'none';
   document.getElementById('experiencia').style.display = 'block';
 
-  // Activar cámara
   const video = document.getElementById('video');
+  if (!video) {
+    alert("No se encontró el elemento de video.");
+    return;
+  }
+
   navigator.mediaDevices.getUserMedia({ video: true })
     .then(stream => {
       video.srcObject = stream;

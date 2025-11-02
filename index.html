@@ -6,6 +6,11 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Sonido de fondo activo desde el inicio -->
+  <audio id="musica" autoplay loop muted>
+    <source src="assets/sonido.mp3" type="audio/mpeg">
+  </audio>
+
   <section id="portada">
     <h1>Una fiesta barroque</h1>
     <button onclick="acceder()">Entrar al salón</button>
@@ -23,10 +28,6 @@
 
     <button onclick="iniciarRetrato()">Iniciar retrato barroque</button>
     <button id="compartir" style="display:none;" onclick="compartir()">Compartir en Facebook</button>
-
-    <audio autoplay loop>
-      <source src="assets/sonido.mp3" type="audio/mpeg">
-    </audio>
   </section>
 
   <script src="script.js"></script>
