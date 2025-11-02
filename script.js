@@ -4,16 +4,17 @@ document.body.addEventListener('click', () => {
 });
 
 function acceder() {
-  document.getElementById('portada').style.display = 'none';
-  document.getElementById('experiencia').style.display = 'block';
-
-  // Activar telón teatral
   const telon = document.getElementById('telon');
-  telon.style.display = 'block';
-  setTimeout(() => {
-    telon.style.display = 'none';
-  }, 2000);
+  telon.classList.add('abrir');
 
+  // Esperar a que se abra el telón antes de mostrar el salón
+  setTimeout(() => {
+    document.getElementById('portada').style.display = 'none';
+    document.getElementById('experiencia').style.display = 'block';
+    telon.classList.remove('abrir');
+  }, 1500);
+
+  // Activar cámara
   const video = document.getElementById('video');
   navigator.mediaDevices.getUserMedia({ video: true })
     .then(stream => {
