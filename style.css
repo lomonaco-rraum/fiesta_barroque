@@ -1,19 +1,35 @@
 body {
-  font-family: 'Cormorant Garamond', serif;
+  margin: 0;
+  font-family: 'Old English Text MT', cursive;
   background-color: #fff8f0;
   color: #2c1c0c;
   text-align: center;
 }
 
+#portada {
+  background-image: url('assets/portada.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 h1 {
-  font-family: 'Playfair Display', serif;
   font-size: 3em;
   color: white;
   text-shadow: 2px 2px 4px gold;
 }
 
-.barroque {
-  font-style: italic;
-  font-weight: bold;
-  color: #a52a2a;
+.menu-barroque {
+  font-family: 'Old English Text MT', cursive;
+  font-size: 1.5em;
+  border: 2px solid gold;
+  background-color: #fff8f0;
+  color: #2c1c0c;
+  padding: 10px;
+  margin: 10px;
 }

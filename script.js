@@ -17,6 +17,6 @@ function iniciarRetrato() {
 
 function compartir() {
   const texto = "Estoy en #soymadamepompadour en #fiestabarroque";
-  const url = `https://www.facebook.com/sharer/sharer.php?quote=${encodeURIComponent(texto)}&u=https://tuusuario.github.io/una-fiesta-barroque/`;
+  const url = `https://www.facebook.com/sharer/sharer.php?quote=${encodeURIComponent(texto)}&u=https://lomonaco-rraum.github.io/fiesta_barroque/`;
   window.open(url, '_blank');
 }
