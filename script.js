@@ -43,10 +43,28 @@ function iniciarRenderizado(video, canvas, imagen) {
 
   function renderLoop() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Escalado proporcional del video
+    const videoRatio = video.videoWidth / video.videoHeight;
+    const canvasRatio = canvas.width / canvas.height;
+
+    let drawWidth, drawHeight;
+    if (videoRatio > canvasRatio) {
+      drawHeight = canvas.height;
+      drawWidth = videoRatio * drawHeight;
+    } else {
+      drawWidth = canvas.width;
+      drawHeight = drawWidth / videoRatio;
+    }
+
+    const offsetX = (canvas.width - drawWidth) / 2;
+    const offsetY = (canvas.height - drawHeight) / 2;
+
     ctx.filter = "sepia(0.6) contrast(1.2) saturate(1.3)";
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(video, offsetX, offsetY, drawWidth, drawHeight);
     ctx.filter = "none";
     ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
+
     frameId = requestAnimationFrame(renderLoop);
   }
 
@@ -63,8 +81,25 @@ document.getElementById("obturador").addEventListener("click", () => {
   }
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Escalado proporcional del video
+  const videoRatio = video.videoWidth / video.videoHeight;
+  const canvasRatio = canvas.width / canvas.height;
+
+  let drawWidth, drawHeight;
+  if (videoRatio > canvasRatio) {
+    drawHeight = canvas.height;
+    drawWidth = videoRatio * drawHeight;
+  } else {
+    drawWidth = canvas.width;
+    drawHeight = drawWidth / videoRatio;
+  }
+
+  const offsetX = (canvas.width - drawWidth) / 2;
+  const offsetY = (canvas.height - drawHeight) / 2;
+
   ctx.filter = "sepia(0.6) contrast(1.2) saturate(1.3)";
-  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+  ctx.drawImage(video, offsetX, offsetY, drawWidth, drawHeight);
   ctx.filter = "none";
 
   const marco = new Image();
