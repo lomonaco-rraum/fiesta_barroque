@@ -26,17 +26,21 @@ html, body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: opacity 1.5s ease;
 }
 
 #portada h1 {
   font-size: 12vw;
-  color: gold;
-  text-shadow: 2px 2px 0 #000, 4px 4px 0 #333;
+  color: white;
+  text-shadow:
+    0 0 5px gold,
+    2px 2px 0 gold,
+    -2px -2px 0 gold;
   line-height: 1.2;
 }
 
+/* Botón barroco */
 .boton-barroque {
+  font-family: 'Old English Text MT', cursive;
   font-size: 5vw;
   padding: 2vh 4vw;
   background: black;
@@ -62,7 +66,7 @@ html, body {
   background-repeat: no-repeat;
   background-color: rgba(255, 248, 240, 0.5);
   background-blend-mode: overlay;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -71,6 +75,8 @@ html, body {
 #pregunta h2 {
   font-size: 8vw;
   margin: 1vh 0;
+  color: white;
+  text-shadow: 0 0 5px gold;
 }
 
 .menu-barroque {

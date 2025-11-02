@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" href="style.css">
 </head>
-<body onclick="tomarFoto()">
+<body>
   <audio id="musica" autoplay loop>
     <source src="assets/sonido.mp3" type="audio/mpeg">
   </audio>
@@ -14,7 +14,7 @@
   <!-- Portada -->
   <section id="portada">
     <h1><span>Fiesta</span><br><span>barroque</span></h1>
-    <button class="boton-barroque" onclick="acceder()">Entrar al salón</button>
+    <button class="boton-barroque" id="entrar">Entrar al salón</button>
   </section>
 
   <!-- Salón barroque -->
@@ -32,6 +32,21 @@
     <img id="hashtag" src="assets/hashtag.png" style="display:none; position:absolute; bottom:10vh; width:80vw;" />
   </section>
 
-  <script src="script.js"></script>
+  <script>
+    document.getElementById("entrar").addEventListener("click", () => {
+      document.getElementById("portada").style.display = "none";
+      document.getElementById("experiencia").style.display = "flex";
+
+      const video = document.getElementById("video");
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+          video.srcObject = stream;
+          video.style.display = "none"; // se activa solo para captura
+        })
+        .catch(err => {
+          alert("No se pudo acceder a la cámara: " + err);
+        });
+    });
+  </script>
 </body>
 </html>
