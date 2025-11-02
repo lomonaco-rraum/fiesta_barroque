@@ -2,21 +2,18 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Una fiesta barroque</title>
+  <title>Fiesta barroque</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <audio id="musica" autoplay loop muted>
+<body onclick="tomarFoto()">
+  <audio id="musica" autoplay loop>
     <source src="assets/sonido.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Telón teatral -->
-  <div id="telon"></div>
-
   <!-- Portada -->
   <section id="portada">
-    <h1>Una fiesta barroque</h1>
+    <h1><span>Fiesta</span><br><span>barroque</span></h1>
     <button class="boton-barroque" onclick="acceder()">Entrar al salón</button>
   </section>
 
@@ -32,9 +29,7 @@
 
     <video id="video" autoplay playsinline style="display:none;"></video>
     <canvas id="composicion" width="300" height="400" style="display:none;"></canvas>
-
-    <button onclick="iniciarRetrato()">Iniciar retrato barroque</button>
-    <button id="compartir" style="display:none;" onclick="compartir()">Compartir en Facebook</button>
+    <img id="hashtag" src="assets/hashtag.png" style="display:none; position:absolute; bottom:10vh; width:80vw;" />
   </section>
 
   <script src="script.js"></script>
