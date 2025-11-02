@@ -29,8 +29,8 @@ function iniciarRetrato() {
   canvas.style.display = 'block';
   document.getElementById('pregunta').style.display = 'none';
 
-  // Dibujar rostro desde cámara
-  ctx.drawImage(video, 200, 200, 200, 200); // Ajustá según el hueco
+  // Dibujar rostro desde cámara (ajustá según el hueco de la imagen)
+  ctx.drawImage(video, 200, 200, 200, 200); // x, y, width, height
 
   // Superponer imagen PNG centrada
   imagen.onload = () => {
