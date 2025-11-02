@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link rel="stylesheet" href="style.css">
 </head>
-<body onclick="tomarFoto()">
+<body>
   <audio id="musica" autoplay loop>
     <source src="assets/sonido.mp3" type="audio/mpeg">
   </audio>
@@ -29,6 +29,8 @@
     <video id="video" autoplay playsinline style="display:none;"></video>
     <canvas id="composicion" style="display:none;"></canvas>
     <img id="hashtag" src="assets/hashtag.png" style="display:none; position:absolute; bottom:10vh; width:80vw;" />
+
+    <button id="obturador" class="boton-barroque" style="display:none;">Click</button>
 
     <div id="compartir" style="display:none;">
       <a href="https://www.facebook.com/groups/786343180070849" target="_blank" class="boton-barroque">Compartir en Facebook</a>
