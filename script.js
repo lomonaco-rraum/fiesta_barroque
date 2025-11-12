@@ -15,7 +15,7 @@ document.getElementById("retrato").addEventListener("click", () => {
   const video = document.getElementById("video");
   const canvas = document.getElementById("composicion");
   const imagen = new Image();
-  imagen.src = `assets/${estado}.png`;
+  imagen.src = `assets/${estado}`;
 
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -23,7 +23,7 @@ document.getElementById("retrato").addEventListener("click", () => {
   video.style.display = "block";
   canvas.style.display = "block";
 
-  document.getElementById("experiencia").style.backgroundImage = `url('assets/${estado}.png')`;
+  document.getElementById("experiencia").style.backgroundImage = `url('assets/${estado}')`;
 
   navigator.mediaDevices.getUserMedia({ video: true })
     .then(stream => {
@@ -104,7 +104,7 @@ document.getElementById("obturador").addEventListener("click", () => {
   ctx.filter = "none";
 
   const marco = new Image();
-  marco.src = `assets/${estado}.png`;
+  marco.src = `assets/${estado}`;
   marco.onload = () => {
     ctx.drawImage(marco, 0, 0, canvas.width, canvas.height);
 
